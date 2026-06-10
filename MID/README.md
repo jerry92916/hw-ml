@@ -28,19 +28,19 @@
 數據提煉模組接收到時序坐標後，會進行一系列的特徵工程計算，將原始坐標轉化為高階運動表現指標：
 
 1. **時序瞬時速度微分 (Velocity Derivative)**
-   系統透過計算連續幀之間的歐幾里得距離（Euclidean Distance）來獲取像素位移量（$\Delta d_{\mathrm{px}}$），再結合影片的幀率（**FPS**）進行時間微分，最終轉換為真實世界物理速度（**m/s**）：
+   系統透過計算連續幀之間的歐幾里得距離（Euclidean Distance）來獲取像素位移量，再結合影片的幀率（**FPS**）進行時間微分，最終轉換為真實世界物理速度：
    
    $$\Delta d_{\mathrm{px}} = \sqrt{(Feet_{\mathrm{x}, t} - Feet_{\mathrm{x}, t-1})^2 + (Feet_{\mathrm{y}, t} - Feet_{\mathrm{y}, t-1})^2}$$
    
    $$Speed_{\mathrm{m/s}} = \frac{\Delta d_{\mathrm{px}}}{\mathrm{PixelsPerMeter}} \times \text{FPS}$$
 
 2. **防守覆蓋面積拓撲計算 (Court Coverage Area)**
-   為了量化選手的跑位範圍，系統引入了幾何拓撲學中的**凸包演算法（Convex Hull）**。此演算法會將選手在整場比賽（或特定回合）中所有雙足接地點的二維空間分佈視為點雲（Point Cloud），並尋找一個能夠包覆所有點的最小凸多邊形。通過計算該凸多邊形的內部面積（幾何體積 $V_{\mathrm{hull}}$），再除以比例尺的平方，即可精確產出選手的實際球場防守覆蓋面積（$m^2$）：
+   為了量化選手的跑位範圍，系統引入了幾何拓撲學中的**凸包演算法（Convex Hull）**。此演算法會將選手在整場比賽（或特定回合）中所有雙足接地點的二維空間分佈視為點雲（Point Cloud），並尋找一個能夠包覆所有點的最小凸多邊形。通過計算該凸多邊形的內部面積，再除以比例尺的平方，即可精確產出選手的實際球場防守覆蓋面積：
    
    $$\text{Coverage Area } (m^2) = \frac{V_{\mathrm{hull}}}{\mathrm{PixelsPerMeter}^2}$$
 
 3. **量化體能消耗指數 (Stamina Depletion Index)**
-   本專題自主研發了一套經驗加權能耗評估模型。考量到羽球運動中「長距離位移」與「瞬間高爆發衝刺」對體能的交叉影響，模型對結構化數據進行特徵加權融合，定義能耗指數（$SDI$）為：
+   本專題自主研發了一套經驗加權能耗評估模型。考量到羽球運動中「長距離位移」與「瞬間高爆發衝刺」對體能的交叉影響，模型對結構化數據進行特徵加權融合，定義能耗指數為：
    
    $$SDI = (\text{Total Distance} \times 0.6) + (\text{Average Speed} \times 0.4)$$
    
