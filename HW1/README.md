@@ -1,4 +1,4 @@
-# 旅行推銷員問題 (TSP) - 爬山演算法與 2-opt 局部搜尋實作
+# 習題 1 - 請用爬山演算法解決旅行推銷員問題
 
 這個專案使用 **爬山演算法 (Hill Climbing)** 結合 **2-opt 演算法** 來求解經典的**旅行推銷員問題 (Traveling Salesperson Problem, TSP)**。透過定義合適的狀態評估函數（Height Function），讓演算法能在鄰域空間中不斷尋找更短的巡迴路徑，最終收斂至局部最佳解（Local Optimum）。
 
