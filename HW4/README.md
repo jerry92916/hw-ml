@@ -1,4 +1,4 @@
-# MicroGPT-Names: 基於字符級 Transformer 的英文名字生成器
+# 習題 4 -- 請用 AI 本地開發工具 (opencode, antigravity, codex, ....) 寫一個 GPT
 
 這是我親手打造的一個輕量級、純 PyTorch 實現的 **Causal Transformer (GPT) 語言模型**。本專案的目標是透過一個「字元級 (Character-level) 語言模型」，讓機器學習英文字母的排列組合規律，並自主生成符合英文語感的全新名字。
 
