@@ -1,4 +1,4 @@
-# Markov-Tree-Generator: 基於決策樹的二階馬可夫中文文本生成器
+# 習題 6 -- 請用非 transformer (attention) 的方法，做一個語言模型
 
 本專案實作了一個非常有創意的統計語言模型（Statistical Language Model）。傳統的馬可夫鏈（Markov Chain）通常使用轉移機率矩陣（Transition Matrix）或次數統計表來預測下一個字，而本專案則大膽地將**決策樹分類器 (Decision Tree Classifier)** 作為預測核心。
 
